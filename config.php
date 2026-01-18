@@ -1,11 +1,17 @@
 <?php
-$botToken  = "7641785401:AAFN-O4kE821lhTS8LwF09eZ3rTInZ0ZWCo";
-$admin_id  = "8488147633";
+// READ FROM RENDER ENVIRONMENT VARIABLES
+$botToken = getenv("BOT_TOKEN");
+$admin_id = getenv("ADMIN_ID");
 
-// Put your 4 channels here later
+// CHANNEL USERNAMES ONLY (with @)
 $channels = [
   "@house_of_floriaa",
   "@SadistLootHub",
   "@ANKURXTECHSTEALS",
   "@ANKURXTECHSTEALSDISCUSS"
 ];
+
+// SAFETY CHECK (IMPORTANT)
+if (!$botToken) {
+  file_put_contents(__DIR__."/bot_debug.log", "BOT_TOKEN is EMPTY\n", FILE_APPEND);
+}
